@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Mystic AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>✦ MYSTIC AI ✦</h1>
+    <div class="header-controls">
+      <select class="language-switcher">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <button class="delete-data-btn">🗑️ Delete My Data</button>
+    </div>
+  </header>
+
+  <div class="admin-container">
+    <section class="page-section" style="background-image: url('books.jpg');">
+      <div class="section-content">
+        <h1>✦ Admin Dashboard ✦</h1>
+        <p style="text-align: center; margin-bottom: 2rem; color: #d4af37;">
+          Manage wisdom texts and sacred knowledge for the Awareness section.
+        </p>
+        
+        <form class="admin-form">
+          <div class="form-group">
+            <label for="book-title">📚 Book Title</label>
+            <input type="text" id="book-title" placeholder="Enter the title of the wisdom text..." required>
+          </div>
+          
+          <div class="form-group">
+            <label for="book-text">📖 Full Text</label>
+            <textarea id="book-text" placeholder="Enter the complete text of the wisdom teaching..." required></textarea>
+          </div>
+          
+          <button type="button" class="btn-submit">✨ Add Book to Awareness</button>
+        </form>
+        
+        <div class="books-management">
+          <h2>📚 Current Books</h2>
+          <!-- Books will be dynamically added here -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="index.html" class="btn btn-secondary">← Return to Portal</a>
+          <a href="awareness.html" class="btn" style="margin-left: 1rem;">View Awareness Section →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p class="disclaimer" data-trans="disclaimer">Mystic AI is an experimental AI project for entertainment and educational purposes only. Not a substitute for professional advice.</p>
+    <p>© 2024 Mystic AI Portal. All mystical rights reserved. ✦</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.initializeAdmin();
+      // Re-bind form inputs to functions
+      const form = document.querySelector('.admin-form');
+      const titleInput = form.querySelector('input[type="text"]');
+      const textInput = form.querySelector('textarea');
+      const submitBtn = form.querySelector('.btn-submit');
+      
+      submitBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        if (!titleInput.value.trim() || !textInput.value.trim()) {
+          alert('Please fill in all fields');
+          return;
+        }
+        
+        const books = JSON.parse(localStorage.getItem('books') || '[]');
+        books.push({
+          title: titleInput.value,
+          text: textInput.value,
+          id: Date.now()
+        });
+        
+        localStorage.setItem('books', JSON.stringify(books));
+        titleInput.value = '';
+        textInput.value = '';
+        window.displayBooks();
+        alert('✨ Book added successfully!');
+      });
+    });
+  </script>
+</body>
+</html>

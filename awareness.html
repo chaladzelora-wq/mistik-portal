@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awareness - Mystic AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>✦ MYSTIC AI ✦</h1>
+    <div class="header-controls">
+      <select class="language-switcher">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <button class="delete-data-btn">🗑️ Delete My Data</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="page-section" style="background-image: url('books.jpg');">
+      <div class="section-content">
+        <h1>✦ Awareness: Wisdom Texts & Sacred Knowledge ✦</h1>
+        
+        <p style="text-align: center; margin-bottom: 2rem; font-style: italic; color: #d4af37;">
+          Free users see the first 30% of each text. Subscribe to Premium for full access to all wisdom teachings.
+        </p>
+        
+        <div class="books-list"></div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="index.html" class="btn btn-secondary">← Return to Portal</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p class="disclaimer" data-trans="disclaimer">Mystic AI is an experimental AI project for entertainment and educational purposes only. Not a substitute for professional advice.</p>
+    <p>© 2024 Mystic AI Portal. All mystical rights reserved. ✦</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.initializeBooks();
+    });
+  </script>
+</body>
+</html>
